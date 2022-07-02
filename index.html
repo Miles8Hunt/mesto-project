@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="pages/index.css">
+</head>
+<body class="page">
+
+  <header class="header">
+    <img class="header__logo" src="./images/logo.png" alt="Лого">
+  </header>
+
+  <main class="content">
+    <section class="profile">
+      <div class="profile__card">
+        <img class="profile__avatar" src="./images/Aris.jpg" alt="аватар">
+        <div class="profile__info">
+          <h1 class="profile__title">Miles8Hunt</h1>
+          <button type="button" class="profile__edit-button"></button>
+          <p class="profile__description">Описание</p>
+        </div>
+      </div>
+      <button type="button" class="profile__add-button"></button>
+    </section>
+
+    <section class="cards">
+      <li class="card">
+        <img class="card__image" src="./images/Burning-man-1.jpg" alt="Burning-man">
+        <div class="card__bottom-block">
+          <p class="card__title">Burning man</p>
+          <button type="button" class="card__like"></button>
+        </div>
+      </li>
+
+      <li class="card">
+        <img class="card__image" src="./images/Venice.jpg" alt="Venice">
+        <div class="card__bottom-block">
+          <p class="card__title">Venice</p>
+          <div class="card__like"></div>
+        </div>
+      </li>
+
+      <li class="card">
+        <img class="card__image" src="./images/Burning-man-2.jpg" alt="Burning-man">
+        <div class="card__bottom-block">
+          <p class="card__title">Burning man</p>
+          <div class="card__like"></div>
+        </div>
+      </li>
+
+      <li class="card">
+        <img class="card__image" src="./images/Scarlet-sails.jpg" alt="Scarlet-sails">
+        <div class="card__bottom-block">
+          <p class="card__title">Scarlet sails</p>
+          <div class="card__like"></div>
+        </div>
+      </li>
+
+      <li class="card">
+        <img class="card__image" src="./images/northern-lights.jpg" alt="Northern-lights">
+        <div class="card__bottom-block">
+          <p class="card__title">Northern lights</p>
+          <div class="card__like"></div>
+        </div>
+      </li>
+
+      <li class="card">
+        <img class="card__image" src="./images/Up-Helly-Aa.jpg" alt="Up-Helly-Aa">
+        <div class="card__bottom-block">
+          <p class="card__title">Up Helly Aa</p>
+          <div class="card__like"></div>
+        </div>
+      </li>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__copyright">&copy; 2022 Mesto Festivals</p>
+  </footer>
+
+  <div class="popup popup_none">
+    <div class="popup__container">
+      <button type="button" class="popup__close"></button>
+      <h3 class="popup__title">Редактировать профиль</h3>
+      <form class="popup__form">
+        <fieldset class="popup__set">
+          <input type="text" class="popup__input">
+          <input type="text" class="popup__input">
+          <button type="button" class="popup__submit">Сохранить</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+<style>
+  .popup_none {
+    display: none;
+  }
+</style>
+</body>
+</html>
