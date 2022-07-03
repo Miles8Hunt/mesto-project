@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +10,7 @@
 <body class="page">
 
   <header class="header">
-    <img class="header__logo" src="./images/logo.png" alt="Лого">
+    <img class="header__logo" src="./images/logo.svg" alt="Лого">
   </header>
 
   <main class="content">
@@ -27,53 +27,55 @@
     </section>
 
     <section class="cards">
-      <li class="card">
-        <img class="card__image" src="./images/Burning-man-1.jpg" alt="Burning-man">
-        <div class="card__bottom-block">
-          <p class="card__title">Burning man</p>
-          <button type="button" class="card__like"></button>
-        </div>
-      </li>
+      <ul class="cards__container">
+        <li class="card">
+         <img class="card__image" src="./images/Burning-man-1.jpg" alt="Горящий человек США">
+          <div class="card__bottom-block">
+            <p class="card__title">Burning man</p>
+            <button type="button" class="card__like"></button>
+          </div>
+       </li>
 
-      <li class="card">
-        <img class="card__image" src="./images/Venice.jpg" alt="Venice">
-        <div class="card__bottom-block">
-          <p class="card__title">Venice</p>
-          <div class="card__like"></div>
-        </div>
-      </li>
+        <li class="card">
+          <img class="card__image" src="./images/Venice.jpg" alt="Венецианский карнавал">
+          <div class="card__bottom-block">
+            <p class="card__title">Venice</p>
+            <div class="card__like"></div>
+          </div>
+        </li>
 
-      <li class="card">
-        <img class="card__image" src="./images/Burning-man-2.jpg" alt="Burning-man">
-        <div class="card__bottom-block">
-          <p class="card__title">Burning man</p>
-          <div class="card__like"></div>
-        </div>
-      </li>
+        <li class="card">
+          <img class="card__image" src="./images/Burning-man-2.jpg" alt="Горящий челове США">
+          <div class="card__bottom-block">
+            <p class="card__title">Burning man</p>
+            <div class="card__like"></div>
+          </div>
+        </li>
 
-      <li class="card">
-        <img class="card__image" src="./images/Scarlet-sails.jpg" alt="Scarlet-sails">
-        <div class="card__bottom-block">
-          <p class="card__title">Scarlet sails</p>
-          <div class="card__like"></div>
-        </div>
-      </li>
+        <li class="card">
+          <img class="card__image" src="./images/Scarlet-sails.jpg" alt="Алые паруса Питер">
+          <div class="card__bottom-block">
+            <p class="card__title">Scarlet sails</p>
+            <div class="card__like"></div>
+          </div>
+        </li>
 
-      <li class="card">
-        <img class="card__image" src="./images/northern-lights.jpg" alt="Northern-lights">
-        <div class="card__bottom-block">
-          <p class="card__title">Northern lights</p>
-          <div class="card__like"></div>
-        </div>
-      </li>
+        <li class="card">
+          <img class="card__image" src="./images/northern-lights.jpg" alt="Нулевой день Мексика">
+          <div class="card__bottom-block">
+            <p class="card__title">Day Zero</p>
+            <div class="card__like"></div>
+          </div>
+        </li>
 
-      <li class="card">
-        <img class="card__image" src="./images/Up-Helly-Aa.jpg" alt="Up-Helly-Aa">
-        <div class="card__bottom-block">
-          <p class="card__title">Up Helly Aa</p>
-          <div class="card__like"></div>
-        </div>
-      </li>
+        <li class="card">
+          <img class="card__image" src="./images/Up-Helly-Aa.jpg" alt="Ап Хелли Аа Шотландия">
+          <div class="card__bottom-block">
+            <p class="card__title">Up Helly Aa</p>
+            <button type="button" class="card__like"></button>
+          </div>
+        </li>
+      </ul>  
     </section>
   </main>
 
@@ -85,11 +87,11 @@
     <div class="popup__container">
       <button type="button" class="popup__close"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
-      <form class="popup__form">
+      <form name="edit" class="popup__form">
         <fieldset class="popup__set">
-          <input type="text" class="popup__input">
-          <input type="text" class="popup__input">
-          <button type="button" class="popup__submit">Сохранить</button>
+          <input type="text" class="popup__input" value="Имя пользователя">
+          <input type="text" class="popup__input" value="О себе">
+          <button type="submit" class="popup__submit">Сохранить</button>
         </fieldset>
       </form>
     </div>
