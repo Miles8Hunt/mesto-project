@@ -121,7 +121,10 @@ function formSubmitAddHandler(evt) {
   const newCard = createNewCard(cardNameInput.value, cardLinkInput.value);
   cardsList.prepend(newCard);
   closePopup(popupAdd);
+  cardNameInput.value = null;
+  cardLinkInput.value = null;
 };
+
 formAdd.addEventListener('submit', formSubmitAddHandler);
 
 // Поиск элементов для зума изображения
