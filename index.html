@@ -28,74 +28,65 @@
 
     <section class="cards">
       <ul class="cards__container">
-        <li class="card">
-         <img class="card__image" src="./images/Burning-man-1.jpg" alt="Горящий человек США">
-          <div class="card__bottom-block">
-            <h3 class="card__title">Burning man</h3>
-            <button type="button" class="card__like"></button>
-          </div>
-       </li>
-
-        <li class="card">
-          <img class="card__image" src="./images/Venice.jpg" alt="Венецианский карнавал">
-          <div class="card__bottom-block">
-            <h3 class="card__title">Venice</h3>
-            <button type="button" class="card__like"></button>
-          </div>
-        </li>
-
-        <li class="card">
-          <img class="card__image" src="./images/Burning-man-2.jpg" alt="Горящий челове США">
-          <div class="card__bottom-block">
-            <h3 class="card__title">Burning man</h3>
-            <button type="button" class="card__like"></button>
-          </div>
-        </li>
-
-        <li class="card">
-          <img class="card__image" src="./images/Scarlet-sails.jpg" alt="Алые паруса Питер">
-          <div class="card__bottom-block">
-            <h3 class="card__title">Scarlet sails</h3>
-            <button type="button" class="card__like"></button>
-          </div>
-        </li>
-
-        <li class="card">
-          <img class="card__image" src="./images/northern-lights.jpg" alt="Нулевой день Мексика">
-          <div class="card__bottom-block">
-            <h3 class="card__title">Day Zero</h3>
-            <button type="button" class="card__like"></button>
-          </div>
-        </li>
-
-        <li class="card">
-          <img class="card__image" src="./images/Up-Helly-Aa.jpg" alt="Ап Хелли Аа Шотландия">
-          <div class="card__bottom-block">
-            <h3 class="card__title">Up Helly Aa</h3>
-            <button type="button" class="card__like"></button>
-          </div>
-        </li>
-      </ul>  
+      </ul>
     </section>
+
   </main>
 
   <footer class="footer">
     <p class="footer__copyright">&copy; 2022 Mesto Festivals</p>
   </footer>
 
-  <div class="popup popup_none">
-    <div class="popup__container">
-      <button type="button" class="popup__close"></button>
+  <template class="cards-template">
+    <li class="card">
+        <img class="card__image">
+        <button type="button" class="card__delete"></button>
+        <div class="card__bottom-block">
+            <h2 class="card__title"></h2>
+            <button type="button" class="card__like"></button>
+        </div>
+    </li>
+  </template>
+
+  <div class="popup popup__edit">
+    <div class="popup__container" id="popup__edit">
+      <button type="button" class="popup__close popup__edit-close"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
-      <form name="edit" class="popup__form">
+      <form name="edit" class="popup__form popup__form-edit">
         <fieldset class="popup__set">
-          <input type="text" class="popup__input" value="Имя пользователя">
-          <input type="text" class="popup__input" value="О себе">
+          <input type="text" class="popup__input popup__input_type-userName" required placeholder="Имя пользователя">
+          <input type="text" class="popup__input popup__input_type-about" required placeholder="О себе">
           <button type="submit" class="popup__submit">Сохранить</button>
         </fieldset>
       </form>
     </div>
   </div>
+
+  <div class="popup popup__add">
+    <div class="popup__container" id="popup__add">
+      <button type="button" class="popup__close popup__add-close"></button>
+      <h3 class="popup__title">Новое место</h3>
+      <form name="add" class="popup__form popup__form-add">
+        <fieldset class="popup__set">
+          <input type="text" class="popup__input popup__input_type-name" required placeholder="Название">
+          <input type="text" class="popup__input popup__input_type-image" required placeholder="Ссылка на картинку">
+          <button type="submit" class="popup__submit">Создать</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup popup__zoom">
+    <div class="popup__figure" id="popup__imageZoom-container">
+      <button type="button" class="popup__close popup__zoom-close"></button>
+      <figure class="popup__figure">
+        <img class="popup__image" src="./images/Scarlet-sails.jpg" alt="Алые паруса">
+        <figcaption class="popup__caption"></figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <script src="./pages/index.js"></script>
 
 </body>
 </html>
