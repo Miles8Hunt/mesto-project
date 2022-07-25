@@ -10,7 +10,7 @@
   cursor: pointer;
 }
 
-.card__like:hover {
+.card__delete:hover {
   opacity: 0.5;
   transition: .3s ease;
 }
