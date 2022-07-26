@@ -2,24 +2,30 @@ const content = document.querySelector('.content');
 const profile = content.querySelector('.profile');
 
 // Поиск попапов
-const popup = document.querySelector('.popup');
 const popupEdit = document.querySelector('.popup__edit');
 const popupAdd = document.querySelector('.popup__add');
 const popupZoom = document.querySelector('.popup__zoom');
 
 // Поиск кнопок 
 const editOpen = profile.querySelector('.profile__edit-button');
-const editClose = document.querySelector('.popup__edit-close');
 const addOpen = profile.querySelector('.profile__add-button');
-const addClose = document.querySelector('.popup__add-close');
-const zoomClose = document.querySelector('.popup__zoom-close');
+const closeButtons = document.querySelectorAll('.popup__close');
 
 // Добавление события на кнопки 
-editOpen.addEventListener('click', () => popupEdit.classList.add('popup_active'));
-editClose.addEventListener('click', () => popupEdit.classList.remove('popup_active'));
-addOpen.addEventListener('click', () => popupAdd.classList.add('popup_active'));
-addClose.addEventListener('click', () => popupAdd.classList.remove('popup_active'));
-zoomClose.addEventListener('click', () => popupZoom.classList.remove('popup_active'));
+editOpen.addEventListener('click', function () {
+  editNameInput.value = profileName.textContent;
+  editAboutInput.value = profileAbout.textContent;
+  openPopup(popupEdit); // открываем попап редактирования
+});
+addOpen.addEventListener('click', function () {
+  openPopup(popupAdd); // открываем попап добавления
+});
+closeButtons.forEach((button) => {
+  // находим 1 раз ближайший к крестику попап 
+  const popup = button.closest('.popup');
+  // устанавливаем обработчик закрытия на крестик
+  button.addEventListener('click', () => closePopup(popup));
+});
 
 function openPopup(popup) {
   popup.classList.add('popup_active');
@@ -40,13 +46,13 @@ const editNameInput = document.querySelector('.popup__input_type-userName');
 const editAboutInput = document.querySelector('.popup__input_type-about');
 
 // Форма редактирования имени и информации о себе
-function formSubmitEditHandler(evt) {
+function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = editNameInput.value;
   profileAbout.textContent = editAboutInput.value;
   closePopup(popupEdit);
 };
-formEdit.addEventListener('submit', formSubmitEditHandler);
+formEdit.addEventListener('submit', handleProfileFormSubmit);
 
 // Куда добавлять карточки 
 const cardsList = document.querySelector('.cards__container');
@@ -116,16 +122,15 @@ const cardNameInput = document.querySelector('.popup__input_type-name');
 const cardLinkInput = document.querySelector('.popup__input_type-image');
 
 // Форма добавления карточки
-function formSubmitAddHandler(evt) {
+function handleAddFormSubmit(evt) { 
   evt.preventDefault();
   const newCard = createNewCard(cardNameInput.value, cardLinkInput.value);
   cardsList.prepend(newCard);
   closePopup(popupAdd);
-  cardNameInput.value = null;
-  cardLinkInput.value = null;
+  evt.target.reset() // Очистка формы
 };
 
-formAdd.addEventListener('submit', formSubmitAddHandler);
+formAdd.addEventListener('submit', handleAddFormSubmit);
 
 // Поиск элементов для зума изображения
 const imageZoom = document.querySelector('.popup__image');
