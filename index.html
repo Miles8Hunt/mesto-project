@@ -5,18 +5,18 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="pages/index.css">
+  <link rel="stylesheet" href="./src/pages/index.css">
 </head>
 <body class="page">
 
   <header class="header">
-    <img class="header__logo" src="./images/logo.svg" alt="Лого">
+    <img class="header__logo" src="./src/images/logo.svg" alt="Лого">
   </header>
 
   <main class="content">
     <section class="profile">
       <div class="profile__card">
-        <img class="profile__avatar" src="./images/Aris.jpg" alt="аватар">
+        <img class="profile__avatar" src="./src/images/Aris.jpg" alt="аватар">
         <div class="profile__info">
           <h1 class="profile__title">Miles8Hunt</h1>
           <button type="button" class="profile__edit-button"></button>
@@ -54,8 +54,8 @@
       <h3 class="popup__title">Редактировать профиль</h3>
       <form name="edit" class="popup__form popup__form-edit">
         <fieldset class="popup__set">
-          <input type="text" class="popup__input popup__input_type-userName" required placeholder="Имя пользователя">
-          <input type="text" class="popup__input popup__input_type-about" required placeholder="О себе">
+          <input type="text" class="popup__input popup__input_type-userName" required placeholder="Имя пользователя" minlength="2" maxlength="40">
+          <input type="text" class="popup__input popup__input_type-about" required placeholder="О себе" minlength="2" maxlength="200">
           <button type="submit" class="popup__submit">Сохранить</button>
         </fieldset>
       </form>
@@ -69,7 +69,7 @@
       <form name="add" class="popup__form popup__form-add">
         <fieldset class="popup__set">
           <input type="text" class="popup__input popup__input_type-name" required placeholder="Название">
-          <input type="text" class="popup__input popup__input_type-image" required placeholder="Ссылка на картинку">
+          <input type="url" class="popup__input popup__input_type-image" required placeholder="Ссылка на картинку">
           <button type="submit" class="popup__submit">Создать</button>
         </fieldset>
       </form>
@@ -80,13 +80,13 @@
     <div class="popup__figure" id="popup__imageZoom-container">
       <button type="button" class="popup__close"></button>
       <figure class="popup__figure">
-        <img class="popup__image" src="./images/Scarlet-sails.jpg" alt="Алые паруса">
+        <img class="popup__image" src="./src/images/Scarlet-sails.jpg" alt="Алые паруса">
         <figcaption class="popup__caption"></figcaption>
       </figure>
     </div>
   </div>
 
-  <script src="./pages/index.js"></script>
+  <script src="./src/pages/page.js"></script>
 
 </body>
 </html>

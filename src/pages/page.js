@@ -34,6 +34,7 @@ function closePopup(popup) {
   popup.classList.remove('popup_active');
 }
 
+
 // Поиск формы редактирования в DOM
 const formEdit = document.querySelector('.popup__form-edit');
 
@@ -62,27 +63,27 @@ const cardsTemplate = document.querySelector('.cards-template').content;
 const initialCards = [
   {
     name: 'Up Helly Aa',
-    src: './images/Up-Helly-Aa.jpg'
+    src: './src/images/Up-Helly-Aa.jpg'
   },
   {
     name: 'Day Zero',
-    src: './images/northern-lights.jpg'
+    src: './src/images/northern-lights.jpg'
   },
   {
     name: 'Scarlet sails',
-    src: './images/Scarlet-sails.jpg'
+    src: './src/images/Scarlet-sails.jpg'
   },
   {
     name: 'Burning man',
-    src: './images/Burning-man-2.jpg'
+    src: './src/images/Burning-man-2.jpg'
   },
   {
     name: 'Venice',
-    src: './images/Venice.jpg'
+    src: './src/images/Venice.jpg'
   },
   {
     name: 'Burning man',
-    src: './images/Burning-man-1.jpg'
+    src: './src/images/Burning-man-1.jpg'
   }
 ];
 
