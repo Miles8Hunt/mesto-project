@@ -59,32 +59,21 @@ formEdit.addEventListener('submit', handleProfileFormSubmit);
 const cardsList = document.querySelector('.cards__container');
 const cardsTemplate = document.querySelector('.cards-template').content;
 
+
+const UpHellyAa = new URL('./images/Up-Helly-Aa.jpg', import.meta.url);
+const DayZero = new URL('./images/northern-lights.jpg', import.meta.url);
+const ScarletSails = new URL('./images/Scarlet-sails.jpg', import.meta.url);
+const BurningMan1 = new URL('./images/Burning-man-2.jpg', import.meta.url);
+const Venice = new URL('./images/Venice.jpg', import.meta.url);
+const BurningMan2 = new URL('./images/Burning-man-1.jpg', import.meta.url);
 // Массив с заготовленными карточками
 const initialCards = [
-  {
-    name: 'Up Helly Aa',
-    src: './src/images/Up-Helly-Aa.jpg'
-  },
-  {
-    name: 'Day Zero',
-    src: './src/images/northern-lights.jpg'
-  },
-  {
-    name: 'Scarlet sails',
-    src: './src/images/Scarlet-sails.jpg'
-  },
-  {
-    name: 'Burning man',
-    src: './src/images/Burning-man-2.jpg'
-  },
-  {
-    name: 'Venice',
-    src: './src/images/Venice.jpg'
-  },
-  {
-    name: 'Burning man',
-    src: './src/images/Burning-man-1.jpg'
-  }
+  { name: 'Up Helly Aa', link: UpHellyAa },
+  { name: 'Day Zero', link: DayZero },
+  { name: 'Scarlet sails', link: ScarletSails },
+  { name: 'Burning man', link: BurningMan1 },
+  { name: 'Venice', link: Venice },
+  { name: 'Burning man', link: BurningMan2 }
 ];
 
 // Инициализация заготовленных карточек

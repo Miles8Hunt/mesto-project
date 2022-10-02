@@ -4,15 +4,24 @@
   box-sizing: border-box;
   border: none;
   border-bottom: 1px solid rgb(0,0,0, 0.2);
-  margin-bottom: 30px;
+  margin-top: 30px;
+  padding-bottom: 10px;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
 }
 
-.popup__input:last-of-type {
-  margin-bottom: 0;
+.popup__input:first-of-type {
+  margin-top: 0;
+}
+
+.popup__input::placeholder {
+  color: #C4C4C4;
+}
+
+.popup__input:focus {
+  outline: none !important;
 }
 
 @media screen and (max-width: 568px) {
