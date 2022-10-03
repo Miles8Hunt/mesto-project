@@ -1,4 +1,4 @@
-import {openPopup, closePopup, closePopupEsc, closePopupOverlay, openZoomPopup} from "./popup.js";
+import {openPopup, closePopup, closePopupEsc, openZoomPopup} from "./popup.js";
 import {popupAdd, cardsList, cardsTemplate, formAdd, cardNameInput, cardLinkInput} from "./utils/utils.js";
 
 //=========================================================================================================

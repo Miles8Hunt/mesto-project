@@ -10,7 +10,7 @@ const popupAdd = document.querySelector('.popup__add');
 // Поиск кнопок 
 const editOpen = profile.querySelector('.profile__edit-button');
 const addOpen = profile.querySelector('.profile__add-button');
-const closeButtons = document.querySelectorAll('.popup__close');
+const popups = document.querySelectorAll('.popup');
 
 //=========================================================================================================
 
@@ -73,7 +73,7 @@ const initialCards = [
 //=========================================================================================================
 
 export {content, profile, popupEdit, popupAdd, 
-        editOpen, addOpen, closeButtons,
+        editOpen, addOpen, popups,
         formEdit, profileName, profileAbout, editNameInput, editAboutInput,
         cardsList, cardsTemplate, formAdd, cardNameInput, cardLinkInput,
         popupZoom, imageZoom, captionZoom,

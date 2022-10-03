@@ -1,7 +1,7 @@
 import './pages/index.css';
 
 import {content, profile, popupEdit, popupAdd, 
-        editOpen, addOpen, closeButtons,
+        editOpen, addOpen, popups,
         formEdit, profileName, profileAbout, editNameInput, editAboutInput,
         UpHellyAa, DayZero, ScarletSails, BurningMan1, Venice, BurningMan2, initialCards} from "./components/utils/utils.js";
 
@@ -15,16 +15,32 @@ import {openPopup, closePopup, closePopupEsc, closePopupOverlay} from "./compone
 editOpen.addEventListener('click', function () {
   editNameInput.value = profileName.textContent;
   editAboutInput.value = profileAbout.textContent;
+  const buttonEdit = document.querySelector('.popup__submit-edit');
+  disableButton(buttonEdit);
   openPopup(popupEdit); // открываем попап редактирования
 });
 addOpen.addEventListener('click', function () {
+  const buttonAdd = document.querySelector('.popup__submit-add');
+  disableButton(buttonAdd);
   openPopup(popupAdd); // открываем попап добавления
 });
-closeButtons.forEach((button) => {
-  // находим 1 раз ближайший к крестику попап 
-  const popup = button.closest('.popup');
-  // устанавливаем обработчик закрытия на крестик
-  button.addEventListener('click', () => closePopup(popup));
+
+//Функция не активности кнопки submit
+function disableButton (button) {
+  button.disabled = true;
+  button.classList.add('popup__submit_inactive');
+};
+
+// обработчики оверлея и крестиков
+popups.forEach((popup) => {
+  popup.addEventListener('mousedown', (evt) => {
+    if (evt.target.classList.contains('popup_active')) {
+      closePopup(popup);
+    }
+    if (evt.target.classList.contains('popup__close')) {
+      closePopup(popup);
+    }
+  });
 });
 
 //=========================================================================================================
