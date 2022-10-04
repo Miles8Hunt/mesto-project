@@ -1,7 +1,7 @@
 import './pages/index.css';
 
 import {content, profile, popupEdit, popupAdd, 
-        editOpen, addOpen, popups,
+        editOpen, addOpen, popups, buttonEdit, buttonAdd,
         formEdit, profileName, profileAbout, editNameInput, editAboutInput,
         UpHellyAa, DayZero, ScarletSails, BurningMan1, Venice, BurningMan2, initialCards} from "./components/utils/utils.js";
 
@@ -15,12 +15,10 @@ import {openPopup, closePopup, closePopupEsc, closePopupOverlay} from "./compone
 editOpen.addEventListener('click', function () {
   editNameInput.value = profileName.textContent;
   editAboutInput.value = profileAbout.textContent;
-  const buttonEdit = document.querySelector('.popup__submit-edit');
   disableButton(buttonEdit);
   openPopup(popupEdit); // открываем попап редактирования
 });
 addOpen.addEventListener('click', function () {
-  const buttonAdd = document.querySelector('.popup__submit-add');
   disableButton(buttonAdd);
   openPopup(popupAdd); // открываем попап добавления
 });

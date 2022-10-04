@@ -47,7 +47,7 @@ const setEventListeners = (formElement, {inputSelector, submitButtonSelector, in
   // Найдём в текущей форме кнопку отправки
   const buttonElement = formElement.querySelector(submitButtonSelector);
   toggleButtonState(inputList, buttonElement, {inactiveButtonClass});
-
+  document.querySelector('.popup__form').reset();
   // Обойдём все элементы полученной коллекции
   inputList.forEach((inputElement) => {
 

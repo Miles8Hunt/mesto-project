@@ -12,6 +12,9 @@ const editOpen = profile.querySelector('.profile__edit-button');
 const addOpen = profile.querySelector('.profile__add-button');
 const popups = document.querySelectorAll('.popup');
 
+const buttonEdit = document.querySelector('.popup__submit-edit');
+const buttonAdd = document.querySelector('.popup__submit-add');
+
 //=========================================================================================================
 
 // Поиск формы редактирования в DOM
@@ -73,7 +76,7 @@ const initialCards = [
 //=========================================================================================================
 
 export {content, profile, popupEdit, popupAdd, 
-        editOpen, addOpen, popups,
+        editOpen, addOpen, popups, buttonEdit, buttonAdd,
         formEdit, profileName, profileAbout, editNameInput, editAboutInput,
         cardsList, cardsTemplate, formAdd, cardNameInput, cardLinkInput,
         popupZoom, imageZoom, captionZoom,
