@@ -4,12 +4,13 @@ import {formElement, formInput} from "./utils/utils.js";
 
 // Функция, которая добавляет класс с ошибкой
 const showInputError = (formElement, inputElement, errorMessage, {inputErrorClass, errorClass}) => {
-
+ 
   // Находим элемент ошибки внутри самой функции
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add(inputErrorClass);
   errorElement.classList.add(errorClass);
   errorElement.textContent = errorMessage;
+
 };
 
 // Функция, которая удаляет класс с ошибкой

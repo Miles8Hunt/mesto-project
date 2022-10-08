@@ -16,11 +16,12 @@
   <main class="content">
     <section class="profile">
       <div class="profile__card">
-        <img class="profile__avatar" src="<%=require('./images/Aris.jpg')%>" alt="аватар">
+        <img class="profile__avatar" alt="аватар">
+        <button class="profile__avatar-btn"></button>
         <div class="profile__info">
-          <h1 class="profile__title">MilesHunt</h1>
+          <h1 class="profile__title">Miles</h1>
           <button type="button" class="profile__edit-button"></button>
-          <p class="profile__description">Студент</p>
+          <p class="profile__description">Ст</p>
         </div>
       </div>
       <button type="button" class="profile__add-button"></button>
@@ -43,10 +44,32 @@
         <button type="button" class="card__delete"></button>
         <div class="card__bottom-block">
             <h2 class="card__title"></h2>
-            <button type="button" class="card__like"></button>
+            <div class="card__likes-container">
+              <button type="button" class="card__like"></button>
+              <span class="card__likes-number" id="counter">0</span>
+            </div>
         </div>
     </li>
   </template>
+
+   <div class="popup popup__avatar">
+    <div class="popup__container" id="popup__avatar">
+      <button type="button" class="popup__close"></button>
+      <h3 class="popup__title">Обновить аватар</h3>
+      <form name="avatar" class="popup__form popup__form-avatar" novalidate>
+        <fieldset class="popup__set">
+          <input 
+            class="popup__input" 
+            id="avatar-input" 
+            type="url"
+            required  
+            placeholder="Ссылка на картинку"> 
+          <span class="avatar-input-error popup__input-error"></span>
+          <button type="submit" class="popup__submit popup__submit-avatar">Сохранить</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
 
   <div class="popup popup__edit">
     <div class="popup__container" id="popup__edit">

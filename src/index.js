@@ -1,13 +1,20 @@
 import './pages/index.css';
 
-import {content, profile, popupEdit, popupAdd, 
-        editOpen, addOpen, popups, buttonEdit, buttonAdd,
-        formEdit, profileName, profileAbout, editNameInput, editAboutInput,
-        UpHellyAa, DayZero, ScarletSails, BurningMan1, Venice, BurningMan2, initialCards} from "./components/utils/utils.js";
+import {popupEdit, popupAdd, popupAvatar, 
+        editOpen, addOpen, popups, buttonEdit, buttonAdd, avatarOpen, buttonAvatar,
+        formEdit, profileName, profileAbout, editNameInput, editAboutInput} from "./components/utils/utils.js";
 
 import {enableValidation} from "./components/validate.js";
-import {handleAddFormSubmit, createNewCard, initializeList} from "./components/card.js";
-import {openPopup, closePopup, closePopupEsc, closePopupOverlay} from "./components/popup.js";
+import {initializeList} from "./components/card.js";
+import {openPopup, closePopup} from "./components/popup.js";
+
+import {pushAvatar, getEdit, pushEdit, getInitialCards} from "./components/api.js";
+
+const profileAvatar = document.querySelector('.profile__avatar');
+const formAvatar = document.querySelector('.popup__form-avatar'); 
+const avatarInput = document.querySelector('#avatar-input');
+const avatarLoad = document.querySelector('.popup__submit-avatar');
+const editLoad = document.querySelector('.popup__submit-edit');
 
 //=========================================================================================================
 
@@ -21,6 +28,10 @@ editOpen.addEventListener('click', function () {
 addOpen.addEventListener('click', function () {
   disableButton(buttonAdd);
   openPopup(popupAdd); // открываем попап добавления
+});
+avatarOpen.addEventListener('click', function () {
+  disableButton(buttonAvatar);
+  openPopup(popupAvatar); // открываем попап аватара
 });
 
 //Функция не активности кнопки submit
@@ -44,18 +55,44 @@ popups.forEach((popup) => {
 //=========================================================================================================
 
 // Форма редактирования имени и информации о себе
-function handleProfileFormSubmit(evt) {
+function handleProfileFormSubmit(evt) {   
   evt.preventDefault();
   profileName.textContent = editNameInput.value;
   profileAbout.textContent = editAboutInput.value;
+  editLoad.textContent = "Сохранение...";
+  pushEdit(editNameInput.value, editAboutInput.value);
+  editLoad.textContent = "Сохраненить";
   closePopup(popupEdit);
 };
 formEdit.addEventListener('submit', handleProfileFormSubmit);
 
+// Форма редактирования Аватара
+function handleAvatarFormSubmit(evt) {   
+  evt.preventDefault();
+  profileAvatar.src = avatarInput.value;
+  avatarLoad.textContent = "Сохранение...";
+  pushAvatar(avatarInput.value)
+  avatarLoad.textContent = "Сохраненить";
+  closePopup(popupAvatar);
+};
+formAvatar.addEventListener('submit', handleAvatarFormSubmit);
+
 //=========================================================================================================
 
-// Инициализация заготовленных карточек
-initializeList(initialCards);
+function profileEdit () {
+  getEdit()
+  .then(data => {
+    profileName.textContent = data.name;
+    profileAbout.textContent = data.about;
+    profileAvatar.src = data.avatar;
+  });
+}
+profileEdit();
+
+getInitialCards()
+  .then(res => {
+    initializeList(res);
+  });
 
 enableValidation ({
   formSelector: '.popup__form',
