@@ -1,4 +1,4 @@
-import {popupZoom, imageZoom, captionZoom} from "./utils/utils.js";
+import {popupZoom, imageZoom, captionZoom} from "./utils/constants.js";
 
 //=========================================================================================================
 
@@ -19,6 +19,13 @@ function closePopupEsc(evt) {
   }
 };
 
+function clearInputs (popup) {
+  popup.querySelectorAll('.popup__input').forEach(input => {
+    input.value = null;
+    input.classList.remove('.popup__input_type_error');
+  })
+};
+
 // Открытие попапа с картинкой
 function openZoomPopup(evt) {
   imageZoom.src = evt.target.src;
@@ -29,4 +36,4 @@ function openZoomPopup(evt) {
 
 //=========================================================================================================
   
-export {openPopup, closePopup, closePopupEsc, openZoomPopup};
+export {openPopup, closePopup, closePopupEsc, openZoomPopup, clearInputs};

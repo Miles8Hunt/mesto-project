@@ -1,4 +1,4 @@
-import {editNameInput, editAboutInput, cardNameInput, cardLinkInput,} from "./utils/utils.js";
+import {editNameInput, editAboutInput, cardNameInput, cardLinkInput,} from "./utils/constants.js";
 
 //=========================================================================================================
 
@@ -18,9 +18,17 @@ const api = {
   }
 };
 
+function parseResponse(res) {
+  if (res.ok) {
+    return res.json();
+  } else {
+    return Promise.reject(`Ошибка: ${res.status}`)
+  }
+}
+
 //=========================================================================================================
 
-const pushAvatar = (data) => {
+const updateAvatar = (data) => {
   return fetch(`${api.url}/${api.cohort}/users/me/avatar`, {
     method: api.method.patch,
     headers: api.headers,
@@ -28,40 +36,22 @@ const pushAvatar = (data) => {
       {avatar: data}
     )
   })
-    .then(res => {
-      if (res.ok){
-        return res.json()
-      } else {
-        return Promise.reject(`Ошибка: ${res.status}`)
-      }
-    })
-    .catch(err => {
-      console.error(err)
-    })
+    .then(res => parseResponse(res))
 }
 
 //=========================================================================================================
 
-const getEdit = () => {
+const getUserInfo = () => {
   return fetch(`${api.url}/${api.cohort}/users/me`, {
     method: api.method.get,
     headers: api.headers
   })
-    .then(res => {
-      if (res.ok){
-        return res.json()
-      } else {
-        return Promise.reject(`Ошибка: ${res.status}`)
-      }
-    })    
-    .catch(err => {
-      console.error(err)
-    })
+    .then(res => parseResponse(res))   
 }
 
 //=========================================================================================================
 
-const pushEdit = () => {
+const updateUserInfo = () => {
   return fetch(`${api.url}/${api.cohort}/users/me`, {
     method: api.method.patch,
     headers: api.headers,
@@ -70,16 +60,7 @@ const pushEdit = () => {
       about: editAboutInput.value
     })
   })
-    .then(res => {
-      if (res.ok){
-        return res.json()
-      } else {
-        return Promise.reject(`Ошибка: ${res.status}`)
-      }
-    })
-    .catch(err => {
-      console.error(err)
-    })
+    .then(res => parseResponse(res))
 }
 
 //=========================================================================================================
@@ -89,21 +70,12 @@ const getInitialCards = () => {
     method: api.method.get,
     headers: api.headers
   })
-    .then(res => {
-      if (res.ok){
-        return res.json()
-      } else {
-        return Promise.reject(`Ошибка: ${res.status}`)
-      }
-    })
-    .catch(err => {
-      console.error(err)
-    }) 
+    .then(res => parseResponse(res))
 }
 
 //=========================================================================================================
 
-const pushAddCard = () => {
+const createCard = () => {
   return fetch(`${api.url}/${api.cohort}/cards`, {
     method: api.method.post,
     headers: api.headers,
@@ -112,16 +84,7 @@ const pushAddCard = () => {
       link: cardLinkInput.value
     })
   })
-    .then(res => {
-    if (res.ok){
-      return res.json()
-    } else {
-      return Promise.reject(`Ошибка: ${res.status}`)
-    }
-    })
-    .catch(err => {
-      console.error(err)
-    })
+    .then(res => parseResponse(res))
 }
 
 //=========================================================================================================
@@ -131,16 +94,7 @@ const deleteCard = (id) => {
     method: api.method.delete,
     headers: api.headers
   })
-    .then(res => {
-      if (res.ok){
-        return res.json()
-      } else {
-        return Promise.reject(`Ошибка: ${res.status}`)
-      }
-    })
-    .catch(err => {
-      console.error(err)
-    })
+    .then(res => parseResponse(res))
 }
 
 //=========================================================================================================
@@ -150,16 +104,7 @@ const addLike = (id) => {
     method: api.method.put,
     headers: api.headers
   })
-    .then(res => {
-      if (res.ok){
-        return res.json()
-      } else {
-        return Promise.reject(`Ошибка: ${res.status}`)
-      }
-    })
-    .catch(err => {
-      console.error(err)
-    })
+    .then(res => parseResponse(res))
 }
 
 //=========================================================================================================
@@ -169,20 +114,11 @@ const deleteLike = (id) => {
     method: api.method.delete,
     headers: api.headers
   })
-    .then(res => {
-      if (res.ok){
-        return res.json()
-      } else {
-        return Promise.reject(`Ошибка: ${res.status}`)
-      }
-    })
-    .catch(err => {
-      console.error(err)
-    })
+    .then(res => parseResponse(res))
 }
 
 //=========================================================================================================
 
-export {pushAvatar, getEdit, pushEdit, getInitialCards, pushAddCard, deleteCard, deleteLike, addLike};
+export {updateAvatar, getUserInfo, updateUserInfo, getInitialCards, createCard, deleteCard, deleteLike, addLike};
 
 

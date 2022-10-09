@@ -1,4 +1,4 @@
-import {formElement, formInput} from "./utils/utils.js";
+// import {formElement, formInput} from "./utils/constants.js";
 
 //=========================================================================================================
 
@@ -104,6 +104,12 @@ const toggleButtonState = (inputList, buttonElement, {inactiveButtonClass}) => {
   }
 }; 
 
+//Функция не активности кнопки submit
+function disableSubmitButton (button) {
+  button.disabled = true;
+  button.classList.add('popup__submit_inactive');
+};
+
 //=========================================================================================================
 
-export {enableValidation};
+export {enableValidation, disableSubmitButton, hideInputError};

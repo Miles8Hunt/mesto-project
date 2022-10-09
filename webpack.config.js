@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // подклю�
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // подключите к проекту mini-css-extract-plugin
 
 module.exports = {
-  entry: { main: './src/index.js' },
+  entry: { main: './src/pages/index.js' },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.js',
@@ -13,7 +13,7 @@ module.exports = {
   mode: 'development', // добавили режим разработчика
   devServer: {
 
-    static: path.resolve(__dirname, './dist'), // путь, куда "смотрит" режим разработчика
+    static: path.resolve(__dirname, '../dist'), // путь, куда "смотрит" режим разработчика
 
     compress: true, // это ускорит загрузку в режиме разработки
 
@@ -51,7 +51,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html' // путь к файлу index.html
+      template: './src/pages/index.html' // путь к файлу index.html
     }),
     new CleanWebpackPlugin(), // использовали плагин
     new MiniCssExtractPlugin() // подключение плагина для объединения файлов
