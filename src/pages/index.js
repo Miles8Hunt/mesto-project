@@ -13,7 +13,7 @@ import {enableValidation, disableSubmitButton} from "../components/validate.js";
 
 import {createNewCard} from "../components/card.js";
 
-import {openPopup, closePopup, clearInputs} from "../components/popup.js";
+import {openPopup, closePopup, clearInputs, profileClearError, cardClearError} from "../components/popup.js";
 
 import {updateAvatar, getUserInfo, updateUserInfo, getInitialCards, createCard, deleteLike, addLike, deleteCard} from "../components/api.js";
 
@@ -46,11 +46,13 @@ editOpen.addEventListener('click', function () {
   editNameInput.value = profileName.textContent;
   editAboutInput.value = profileAbout.textContent;
   disableSubmitButton(buttonEdit);
+  profileClearError();
   openPopup(popup.profile); // открываем попап редактирования
 });
 addOpen.addEventListener('click', function () {
   disableSubmitButton(buttonAdd);
   clearInputs(popup.card);
+  cardClearError();
   openPopup(popup.card); // открываем попап добавления
 });
 avatarOpen.addEventListener('click', function () {
