@@ -46,18 +46,14 @@ editOpen.addEventListener('click', function () {
   editNameInput.value = profileName.textContent;
   editAboutInput.value = profileAbout.textContent;
   disableSubmitButton(buttonEdit);
-  profileClearError();
   openPopup(popup.profile); // открываем попап редактирования
 });
 addOpen.addEventListener('click', function () {
   disableSubmitButton(buttonAdd);
-  clearInputs(popup.card);
-  cardClearError();
   openPopup(popup.card); // открываем попап добавления
 });
 avatarOpen.addEventListener('click', function () {
   disableSubmitButton(buttonAvatar);
-  clearInputs(popup.avatar);
   openPopup(popup.avatar); // открываем попап аватара
 });
 
@@ -113,7 +109,7 @@ function handleAddFormSubmit(evt) {
   renderFormLoading(true, cardLoad);
   createCard(cardNameInput.value, cardLinkInput.value)
   .then ((res) => {
-    cardsList.prepend(createNewCard(res.name, res.link, res.likes.length, res.owner._id, res._id))
+    cardsList.prepend(createNewCard(res.name, res.link, res.likes.length, res.owner._id, res._id, res.likes, userId, toggleLike, removeCard))
   })
   .then ( 
     closePopup(popup.profile)
@@ -129,7 +125,7 @@ formAddCard.addEventListener('submit', handleAddFormSubmit);
 // Инициализация заготовленных карточек
 function initializeList(item) {
   item.forEach(function (item) {
-    const card = createNewCard(item.name, item.link, item.likes.length, item.owner._id, item._id, item.likes);
+    const card = createNewCard(item.name, item.link, item.likes.length, item.owner._id, item._id, item.likes, userId, toggleLike, removeCard);
     cardsList.append(card);
   });
 };
@@ -160,7 +156,7 @@ function toggleLike (likesNumber, likes, cardId, cardLike) {
   })
 }
 
-function delitedCard (cardId) {
+function removeCard (cardId) {
   deleteCard(cardId);
 }
 
@@ -170,7 +166,11 @@ enableValidation ({
   submitButtonSelector: '.popup__submit',
   inactiveButtonClass: 'popup__submit_inactive',
   inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_active' 
+  errorClass: 'popup__input-error_active',
+  
+  avatarInput: '.avatar-input-error',
+  userNameInput: '.userName-input-error',
+  aboutInput: '.about-input-error',
+  titleInput: '.title-input-error',
+  urlInput: '.url-input-error'
 });
-
-export {userId, toggleLike, delitedCard}

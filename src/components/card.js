@@ -1,11 +1,10 @@
 import {openZoomPopup} from "./popup.js";
 import {cardsTemplate} from "./utils/constants.js";
-import {userId, toggleLike, delitedCard} from "../pages/index.js";
 
 //=========================================================================================================
 
 // Создание новой карточки
-function createNewCard(cardName, imageLink, likes, cardUserId, cardId, checkLikes) {
+function createNewCard(cardName, imageLink, likes, cardUserId, cardId, checkLikes, userId, toggleLike, removeCard) {
 
   const card = cardsTemplate.cloneNode(true);
   const cardImage = card.querySelector('.card__image');
@@ -33,7 +32,7 @@ function createNewCard(cardName, imageLink, likes, cardUserId, cardId, checkLike
 
   toggleLike(likesNumber, likes, cardId, cardLike);
 
-  cardDelete.addEventListener('click', function () {delitedCard(cardId)});
+  cardDelete.addEventListener('click', function () {removeCard(cardId)});
   cardDelete.addEventListener('click', (evt) => evt.target.closest('.card').remove());
   cardImage.addEventListener('click', openZoomPopup);
   

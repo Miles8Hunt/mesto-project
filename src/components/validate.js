@@ -110,6 +110,17 @@ function disableSubmitButton (button) {
   button.classList.add('popup__submit_inactive');
 };
 
+function resetValidationErrors (popup) {
+  popup.querySelectorAll('.popup__input').forEach(input => {
+    input.value = null;
+    input.classList.remove('popup__input_type_error'); 
+  })
+  const span = popup.querySelectorAll('.popup__input-error');
+  span.forEach( function (span) {
+    span.textContent = null;
+  })
+};
+
 //=========================================================================================================
 
-export {enableValidation, disableSubmitButton, hideInputError};
+export {enableValidation, disableSubmitButton, hideInputError, resetValidationErrors};
