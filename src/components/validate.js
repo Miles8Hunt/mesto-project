@@ -1,4 +1,3 @@
-// import {formElement, formInput} from "./utils/constants.js";
 
 //=========================================================================================================
 
@@ -123,4 +122,4 @@ function resetValidationErrors (popup) {
 
 //=========================================================================================================
 
-export {enableValidation, disableSubmitButton, hideInputError, resetValidationErrors};
+export {enableValidation, disableSubmitButton, resetValidationErrors};

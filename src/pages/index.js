@@ -13,7 +13,7 @@ import {enableValidation, disableSubmitButton} from "../components/validate.js";
 
 import {createNewCard} from "../components/card.js";
 
-import {openPopup, closePopup, clearInputs, profileClearError, cardClearError} from "../components/popup.js";
+import {openPopup, closePopup} from "../components/popup.js";
 
 import {updateAvatar, getUserInfo, updateUserInfo, getInitialCards, createCard, deleteLike, addLike, deleteCard} from "../components/api.js";
 
@@ -167,10 +167,4 @@ enableValidation ({
   inactiveButtonClass: 'popup__submit_inactive',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__input-error_active',
-  
-  avatarInput: '.avatar-input-error',
-  userNameInput: '.userName-input-error',
-  aboutInput: '.about-input-error',
-  titleInput: '.title-input-error',
-  urlInput: '.url-input-error'
 });
