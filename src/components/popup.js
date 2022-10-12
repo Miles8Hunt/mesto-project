@@ -1,5 +1,4 @@
 import {popupZoom, imageZoom, captionZoom} from "./utils/constants.js";
-import {resetValidationErrors} from "./validate.js";
 
 //=========================================================================================================
 
@@ -11,7 +10,6 @@ function openPopup(popup) {
 function closePopup(popup) {
   popup.classList.remove('popup_active');
   document.removeEventListener('keydown', closePopupEsc);
-  resetValidationErrors(popup);
 };
 
 function closePopupEsc(evt) {

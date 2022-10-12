@@ -9,7 +9,7 @@ import {popup, cardsList, cardLoad,
 
 import {renderFormLoading} from "../components/utils/utils.js";
 
-import {enableValidation, disableSubmitButton} from "../components/validate.js";
+import {enableValidation, disableSubmitButton, resetValidationErrors} from "../components/validate.js";
 
 import {createNewCard} from "../components/card.js";
 
@@ -43,16 +43,19 @@ Promise.all([getUserInfo(), getInitialCards()])
 
 // Добавление события на кнопки 
 editOpen.addEventListener('click', function () {
+  resetValidationErrors(popup.profile);
   editNameInput.value = profileName.textContent;
   editAboutInput.value = profileAbout.textContent;
   disableSubmitButton(buttonEdit);
   openPopup(popup.profile); // открываем попап редактирования
 });
 addOpen.addEventListener('click', function () {
+  resetValidationErrors(popup.card);
   disableSubmitButton(buttonAdd);
   openPopup(popup.card); // открываем попап добавления
 });
 avatarOpen.addEventListener('click', function () {
+  resetValidationErrors(popup.avatar);
   disableSubmitButton(buttonAvatar);
   openPopup(popup.avatar); // открываем попап аватара
 });
