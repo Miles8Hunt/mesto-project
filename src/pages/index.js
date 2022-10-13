@@ -1,31 +1,16 @@
 import './index.css';
-
-import {popup, cardsList, cardLoad,
-        editOpen, addOpen, popups, 
-        buttonEdit, buttonAdd, avatarOpen, 
-        buttonAvatar, formEdit, formAddCard, 
-        profileName, profileAbout, editNameInput, 
-        editAboutInput, cardNameInput, cardLinkInput} from "../components/utils/constants.js";
-
+import {popup, cardsList, popups, editOpen, addOpen, buttonEdit, buttonAdd, avatarOpen, 
+        buttonAvatar, formAvatar, formEdit, formAddCard, profileAvatar, profileName, profileAbout, 
+        editNameInput, editAboutInput, avatarInput, cardNameInput, cardLinkInput, userId, cardId,
+        avatarLoad, editLoad, cardLoad, } from "../components/utils/constants.js";
 import {renderFormLoading} from "../components/utils/utils.js";
-
 import {enableValidation, disableSubmitButton, resetValidationErrors} from "../components/validate.js";
-
-import {createNewCard} from "../components/card.js";
-
+import {createNewCard} from "../components/card.js"; 
 import {openPopup, closePopup} from "../components/popup.js";
+import {updateAvatar, getUserInfo, updateUserInfo, getInitialCards, createCard, deleteLike, addLike, 
+        deleteCard} from "../components/api.js";
 
-import {updateAvatar, getUserInfo, updateUserInfo, getInitialCards, createCard, deleteLike, addLike, deleteCard} from "../components/api.js";
-
-const profileAvatar = document.querySelector('.profile__avatar');
-const formAvatar = document.querySelector('.popup__form-avatar'); 
-const avatarInput = document.querySelector('#avatar-input');
-const avatarLoad = document.querySelector('.popup__submit-avatar');
-const editLoad = document.querySelector('.popup__submit-edit');
-const userId = {id: '',};
-const cardId = {id: '',};
-
-//=========================================================================================================
+//===================================================================================================================
 
 Promise.all([getUserInfo(), getInitialCards()])
   .then(([data, cards]) => {
@@ -40,6 +25,8 @@ Promise.all([getUserInfo(), getInitialCards()])
   .catch(err => {
     console.log(err);
   });
+
+//===================================================================================================================
 
 // Добавление события на кнопки 
 editOpen.addEventListener('click', function () {
@@ -60,6 +47,8 @@ avatarOpen.addEventListener('click', function () {
   openPopup(popup.avatar); // открываем попап аватара
 });
 
+//===================================================================================================================
+
 // обработчики оверлея и крестиков
 popups.forEach((popup) => {
   popup.addEventListener('mousedown', (evt) => {
@@ -72,7 +61,7 @@ popups.forEach((popup) => {
   });
 });
 
-//=========================================================================================================
+//===================================================================================================================
 
 // Форма редактирования Аватара
 function handleAvatarFormSubmit(evt) {   
@@ -87,7 +76,7 @@ function handleAvatarFormSubmit(evt) {
 };
 formAvatar.addEventListener('submit', handleAvatarFormSubmit);
 
-//=========================================================================================================
+//===================================================================================================================
 
 // Форма редактирования имени и информации о себе
 function handleProfileFormSubmit(evt) {   
@@ -103,7 +92,7 @@ function handleProfileFormSubmit(evt) {
 };
 formEdit.addEventListener('submit', handleProfileFormSubmit);
 
-//=========================================================================================================
+//===================================================================================================================
 
 // Форма добавления карточки
 function handleAddFormSubmit(evt) { 
@@ -123,7 +112,7 @@ function handleAddFormSubmit(evt) {
 };
 formAddCard.addEventListener('submit', handleAddFormSubmit);
 
-//=========================================================================================================
+//===================================================================================================================
 
 // Инициализация заготовленных карточек
 function initializeList(item) {
@@ -132,6 +121,8 @@ function initializeList(item) {
     cardsList.append(card);
   });
 };
+
+//===================================================================================================================
 
 // Поставить/убрать лайк
 function toggleLike (likesNumber, likes, cardId, cardLike) {
@@ -159,9 +150,13 @@ function toggleLike (likesNumber, likes, cardId, cardLike) {
   })
 }
 
+//===================================================================================================================
+
 function removeCard (cardId) {
   deleteCard(cardId);
 }
+
+//===================================================================================================================
 
 enableValidation ({
   formSelector: '.popup__form',

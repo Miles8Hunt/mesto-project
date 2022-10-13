@@ -1,6 +1,6 @@
 import {popupZoom, imageZoom, captionZoom} from "./utils/constants.js";
 
-//=========================================================================================================
+//===================================================================================================================
 
 function openPopup(popup) {
   popup.classList.add('popup_active');
@@ -19,7 +19,6 @@ function closePopupEsc(evt) {
   }
 };
 
-// Открытие попапа с картинкой
 function openZoomPopup(evt) {
   imageZoom.src = evt.target.src;
   imageZoom.alt = evt.target.alt;
@@ -27,6 +26,6 @@ function openZoomPopup(evt) {
   openPopup(popupZoom);
 };
 
-//=========================================================================================================
+//===================================================================================================================
   
 export {openPopup, closePopup, closePopupEsc, openZoomPopup};

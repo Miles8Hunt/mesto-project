@@ -1,5 +1,5 @@
 
-//=========================================================================================================
+//===================================================================================================================
 
 // Функция, которая добавляет класс с ошибкой
 const showInputError = (formElement, inputElement, errorMessage, {inputErrorClass, errorClass}) => {
@@ -20,6 +20,8 @@ const hideInputError = (formElement, inputElement, {inputErrorClass, errorClass}
   errorElement.textContent = '';
 };
 
+//===================================================================================================================
+
 // Функция, которая проверяет валидность поля
 const isValid = (formElement, inputElement, {inputErrorClass, errorClass}) => {
   
@@ -38,6 +40,8 @@ const isValid = (formElement, inputElement, {inputErrorClass, errorClass}) => {
   }
 };
 
+//===================================================================================================================
+
 // Функция, которая добавит слушатель событий для всех полей ввода внутри формы и добавит нужные обработчики
 const setEventListeners = (formElement, {inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass, errorClass}) => {
 
@@ -48,6 +52,7 @@ const setEventListeners = (formElement, {inputSelector, submitButtonSelector, in
   const buttonElement = formElement.querySelector(submitButtonSelector);
   toggleButtonState(inputList, buttonElement, {inactiveButtonClass});
   document.querySelector('.popup__form').reset();
+
   // Обойдём все элементы полученной коллекции
   inputList.forEach((inputElement) => {
 
@@ -62,6 +67,8 @@ const setEventListeners = (formElement, {inputSelector, submitButtonSelector, in
     });
   });
 }; 
+
+//===================================================================================================================
 
 // Функция enableValidation найдёт на странице и обработает все формы
 const enableValidation = ({formSelector, inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass, errorClass}) => {
@@ -79,12 +86,16 @@ const enableValidation = ({formSelector, inputSelector, submitButtonSelector, in
   });
 };
 
+//===================================================================================================================
+
 // Функция принимает массив полей
 const hasInvalidInput = (inputList) => {
   return inputList.some((inputElement) => {
     return !inputElement.validity.valid;
   }); 
 }; 
+
+//===================================================================================================================
 
 // Функция принимает массив полей ввода и элемент кнопки, состояние которой нужно менять
 const toggleButtonState = (inputList, buttonElement, {inactiveButtonClass}) => {
@@ -103,12 +114,17 @@ const toggleButtonState = (inputList, buttonElement, {inactiveButtonClass}) => {
   }
 }; 
 
+//===================================================================================================================
+
 //Функция не активности кнопки submit
 function disableSubmitButton (button) {
   button.disabled = true;
   button.classList.add('popup__submit_inactive');
 };
 
+//===================================================================================================================
+
+//Функция очистки формы
 function resetValidationErrors (popup) {
   popup.querySelectorAll('.popup__input').forEach(input => {
     input.value = null;
@@ -120,6 +136,6 @@ function resetValidationErrors (popup) {
   })
 };
 
-//=========================================================================================================
+//===================================================================================================================
 
 export {enableValidation, disableSubmitButton, resetValidationErrors};

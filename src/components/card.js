@@ -1,7 +1,7 @@
 import {openZoomPopup} from "./popup.js";
 import {cardsTemplate} from "./utils/constants.js";
 
-//=========================================================================================================
+//===================================================================================================================
 
 // Создание новой карточки
 function createNewCard(cardName, imageLink, likes, cardUserId, cardId, checkLikes, userId, toggleLike, removeCard) {
@@ -39,6 +39,6 @@ function createNewCard(cardName, imageLink, likes, cardUserId, cardId, checkLike
   return card;
 };
 
-//=========================================================================================================
+//===================================================================================================================
 
 export {createNewCard};
