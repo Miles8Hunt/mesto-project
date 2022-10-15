@@ -66,6 +66,7 @@ const formInput = formElement.querySelector('.popup__input');
 
 //===================================================================================================================
 
+// Кнопки отправки формы
 const avatarLoad = document.querySelector('.popup__submit-avatar');
 const editLoad = document.querySelector('.popup__submit-edit');
 const cardLoad = document.querySelector('.popup__submit-add');

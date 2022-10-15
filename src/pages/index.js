@@ -11,6 +11,8 @@ import {updateAvatar, getUserInfo, updateUserInfo, getInitialCards, createCard, 
         deleteCard} from "../components/api.js";
 
 //===================================================================================================================
+// Загрузка готовых карточек и данных о пользователе с сервера
+//-------------------------------------------------------------------------------------------------------------------
 
 Promise.all([getUserInfo(), getInitialCards()])
   .then(([data, cards]) => {
@@ -27,8 +29,9 @@ Promise.all([getUserInfo(), getInitialCards()])
   });
 
 //===================================================================================================================
-
 // Добавление события на кнопки 
+//-------------------------------------------------------------------------------------------------------------------
+
 editOpen.addEventListener('click', function () {
   resetValidationErrors(popup.profile);
   editNameInput.value = profileName.textContent;
@@ -48,8 +51,9 @@ avatarOpen.addEventListener('click', function () {
 });
 
 //===================================================================================================================
-
 // обработчики оверлея и крестиков
+//-------------------------------------------------------------------------------------------------------------------
+
 popups.forEach((popup) => {
   popup.addEventListener('mousedown', (evt) => {
     if (evt.target.classList.contains('popup_active')) {
@@ -62,8 +66,9 @@ popups.forEach((popup) => {
 });
 
 //===================================================================================================================
-
 // Форма редактирования Аватара
+//-------------------------------------------------------------------------------------------------------------------
+
 function handleAvatarFormSubmit(evt) {   
   evt.preventDefault();
   profileAvatar.src = avatarInput.value;
@@ -77,8 +82,9 @@ function handleAvatarFormSubmit(evt) {
 formAvatar.addEventListener('submit', handleAvatarFormSubmit);
 
 //===================================================================================================================
-
 // Форма редактирования имени и информации о себе
+//-------------------------------------------------------------------------------------------------------------------
+
 function handleProfileFormSubmit(evt) {   
   evt.preventDefault();
   profileName.textContent = editNameInput.value;
@@ -93,8 +99,9 @@ function handleProfileFormSubmit(evt) {
 formEdit.addEventListener('submit', handleProfileFormSubmit);
 
 //===================================================================================================================
-
 // Форма добавления карточки
+//-------------------------------------------------------------------------------------------------------------------
+
 function handleAddFormSubmit(evt) { 
   console.log(1);
   evt.preventDefault();
@@ -113,8 +120,9 @@ function handleAddFormSubmit(evt) {
 formAddCard.addEventListener('submit', handleAddFormSubmit);
 
 //===================================================================================================================
-
 // Инициализация заготовленных карточек
+//-------------------------------------------------------------------------------------------------------------------
+
 function initializeList(item) {
   item.forEach(function (item) {
     const card = createNewCard(item.name, item.link, item.likes.length, item.owner._id, item._id, item.likes, userId, toggleLike, removeCard);
@@ -123,8 +131,9 @@ function initializeList(item) {
 };
 
 //===================================================================================================================
-
 // Поставить/убрать лайк
+//-------------------------------------------------------------------------------------------------------------------
+
 function toggleLike (likesNumber, likes, cardId, cardLike) {
   cardLike.addEventListener('click', () => {
     if(cardLike.classList.contains('card__like_active')) {
@@ -151,6 +160,8 @@ function toggleLike (likesNumber, likes, cardId, cardLike) {
 }
 
 //===================================================================================================================
+// Удаляем карточку с сервера
+//-------------------------------------------------------------------------------------------------------------------
 
 function removeCard (cardId) {
   deleteCard(cardId);

@@ -2,8 +2,9 @@ import {openZoomPopup} from "./popup.js";
 import {cardsTemplate} from "./utils/constants.js";
 
 //===================================================================================================================
-
 // Создание новой карточки
+//-------------------------------------------------------------------------------------------------------------------
+
 function createNewCard(cardName, imageLink, likes, cardUserId, cardId, checkLikes, userId, toggleLike, removeCard) {
 
   const card = cardsTemplate.cloneNode(true);
@@ -18,10 +19,12 @@ function createNewCard(cardName, imageLink, likes, cardUserId, cardId, checkLike
   cardImage.alt = cardName;
   likesNumber.textContent = likes;
 
+  // Проверка для отображения кнопки удаления карточки
   if(userId.id !== cardUserId) {
     cardDelete.classList.add('card__delete_none');
   }
 
+  // Проверка для отображения поставленного мной лайка
   if (checkLikes !== undefined) {
     for (let i = 0; i < checkLikes.length; i++) {
       if (checkLikes[i]._id === userId.id) {
